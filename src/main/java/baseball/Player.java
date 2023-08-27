@@ -1,5 +1,7 @@
 package baseball;
 
+import view.View;
+
 import java.util.Scanner;
 
 public class Player {
@@ -28,8 +30,8 @@ public class Player {
     }
 
     public void checkReplayDecision(){
-        //View에 이제 어떤 함수가 있어야할듯함
-
+        //View에 이제 어떤 함수가 있어야할듯
+        View.askReplay();
         String input = playerInput.nextLine();
         replayDecision = checkDecision(input);
     }
