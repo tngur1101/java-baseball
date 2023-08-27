@@ -17,4 +17,8 @@ public class Baseballs {
         balls = Stream.of(rawBallsInput.split("")).map(Integer::parseInt).collect(Collectors.toList());
     }
 
+    public List<Integer> getBalls(){
+        return balls;
+    }
+
 }
