@@ -12,6 +12,7 @@ public class Baseballs {
     private static final String DUPLICATE_NUMBER_ERROR_MESSAGE = "중복되는 수는 포함할 수 없습니다.";
     private static final String ZERO_FOUND_ERROR_MESSAGE = "0은 포함할 수 없습니다.";
     private static final String SIZE_ERROR_MESSAGE = "올바는 양의 숫자가 입력되지 않았습니다.";
+    private static final String NOT_NUMERIC_ERROR_MESSAGE = "입력된 정보가 숫자가 아닙니다.";
 
     public Baseballs(List<Integer> balls){
         this.balls = balls;
@@ -31,6 +32,17 @@ public class Baseballs {
         validateNoZero(rawBallsInput);
         validateNoDuplicate(rawBallsInput);
         validateSize(rawBallsInput);
+        validateNotNumeric(rawBallsInput);
+    }
+
+    private void validateNotNumeric(String rawBallsInput) {
+        if(hasNotNumeric(rawBallsInput)){
+            throw new IllegalArgumentException(NOT_NUMERIC_ERROR_MESSAGE);
+        }
+    }
+
+    private boolean hasNotNumeric(String rawBallsInput) {
+        return Stream.of(rawBallsInput.split("")).anyMatch(x->!Character.isDigit(x.charAt(0)));
     }
 
     private void validateSize(String rawBallsInput) {
