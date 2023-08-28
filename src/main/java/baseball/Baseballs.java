@@ -30,6 +30,12 @@ public class Baseballs {
         validateNoDuplicate(rawBallsInput);
     }
 
+    private void validateNoDuplicate(String rawBallsInput) {
+        if(hasDuplicate(rawBallsInput)){
+            throw new IllegalArgumentException(DUPLICATE_NUMBER_ERROR_MESSAGE);
+        }
+    }
+
     private void validateNoZero(String rawBallsInput) {
         if(hasZero(rawBallsInput)){
             throw new IllegalArgumentException(ZERO_FOUND_ERROR_MESSAGE);
