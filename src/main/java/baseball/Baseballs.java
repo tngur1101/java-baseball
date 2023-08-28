@@ -1,6 +1,7 @@
 package baseball;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -34,6 +35,12 @@ public class Baseballs {
         if(hasDuplicate(rawBallsInput)){
             throw new IllegalArgumentException(DUPLICATE_NUMBER_ERROR_MESSAGE);
         }
+    }
+
+    private boolean hasDuplicate(String rawBallsInput) {
+        Set<Integer> tempBalls = Stream.of(rawBallsInput.split(""))
+                .map(Integer::parseInt).collect(Collectors.toSet());
+        return tempBalls.size()!=BALLS_CONTAINER_SIZE;
     }
 
     private void validateNoZero(String rawBallsInput) {
