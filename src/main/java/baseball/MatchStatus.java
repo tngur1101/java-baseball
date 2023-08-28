@@ -19,24 +19,31 @@ public class MatchStatus {
         return ballCount;
     }
 
-    public void check(int x, Baseballs answerBalls, Baseballs guessBalls){
-        ballCount = checkBalls(x, answerBalls, guessBalls);
-        strikeCount = checkStrikes(x, answerBalls, guessBalls);
+    public void check(Baseballs answerBalls, Baseballs guessBalls){
+        ballCount = checkBalls(answerBalls, guessBalls);
+        strikeCount = checkStrikes(answerBalls, guessBalls);
 
     }
 
-    private long checkStrikes(int x, Baseballs answerBalls, Baseballs guessBalls) {
-        if(guessBalls.getBalls().indexOf(x)==answerBalls.getBalls().indexOf(x)){
-            return guessBalls.getBalls().stream().filter(m->answerBalls.getBalls().contains(m)).count();
-        }
-        return 0;
+    private long checkStrikes(Baseballs answerBalls, Baseballs guessBalls) {
+        return guessBalls.getBalls().stream()
+                .filter(x->answerBalls.getBalls().contains(x))
+                .filter(x->isInSameIndex(x, answerBalls, guessBalls))
+                .count();
     }
 
-    private long checkBalls(int x, Baseballs answerBalls, Baseballs guessBalls) {
-        if(guessBalls.getBalls().indexOf(x)!=answerBalls.getBalls().indexOf(x)){
-            return guessBalls.getBalls().stream().filter(m->answerBalls.getBalls().contains(m)).count();
-        }
-        return 0;
+    private long checkBalls(Baseballs answerBalls, Baseballs guessBalls) {
+        return guessBalls.getBalls().stream()
+                .filter(x->answerBalls.getBalls().contains(x))
+                .filter(x->isInDifferentIndex(x,answerBalls,guessBalls))
+                .count();
     }
 
+    private boolean isInSameIndex(int x, Baseballs answerBalls, Baseballs guessBalls){
+        return answerBalls.getBalls().indexOf(x)==guessBalls.getBalls().indexOf(x);
+    }
+
+    private boolean isInDifferentIndex(int x, Baseballs answerBalls, Baseballs guessBalls){
+        return answerBalls.getBalls().indexOf(x)!=guessBalls.getBalls().indexOf(x);
+    }
 }
