@@ -11,6 +11,7 @@ public class Baseballs {
     private final List<Integer> balls;
     private static final String DUPLICATE_NUMBER_ERROR_MESSAGE = "중복되는 수는 포함할 수 없습니다.";
     private static final String ZERO_FOUND_ERROR_MESSAGE = "0은 포함할 수 없습니다.";
+    private static final String SIZE_ERROR_MESSAGE = "올바는 양의 숫자가 입력되지 않았습니다.";
 
     public Baseballs(List<Integer> balls){
         this.balls = balls;
@@ -29,6 +30,7 @@ public class Baseballs {
     private void validate(String rawBallsInput){
         validateNoZero(rawBallsInput);
         validateNoDuplicate(rawBallsInput);
+        validateSize(rawBallsInput);
     }
 
     private void validateNoDuplicate(String rawBallsInput) {
