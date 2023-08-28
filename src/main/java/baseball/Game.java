@@ -1,6 +1,6 @@
 package baseball;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class Game {
 
@@ -12,12 +12,36 @@ public class Game {
     private static final int MIN_BALL_VALUE = 1;
 
     private final Scanner userInput;
+    private Baseballs answerBalls;
+    private Baseballs guessBalls;
+    private MatchStatus gameStatus;
 
     public Game(Scanner userInput){
         this.userInput = userInput;
     }
 
+    private void initialize(){
+        gameStatus = new MatchStatus();
+        generateAnswerBalls();
+    }
 
+    private void generateAnswerBalls() {
+        answerBalls = new Baseballs(createNonDuplicateNumbers(Baseballs.BALLS_CONTAINER_SIZE));
+    }
+
+    private List<Integer> createNonDuplicateNumbers(int size) {
+        List<Integer> generatedNumbers = new ArrayList<>(createNumberSet(size));
+        Collections.shuffle(generatedNumbers);
+        return generatedNumbers;
+    }
+
+    private Set<Integer> createNumberSet(int ballContainerSize) {
+        Set<Integer> generatedNumbers = new HashSet<>();
+        while(generatedNumbers.size() != ballContainerSize){
+            generatedNumbers.add(new Random().nextInt(MAX_BALL_VALUE - MIN_BALL_VALUE +1));
+        }
+        return generatedNumbers;
+    }
 
 
 }
