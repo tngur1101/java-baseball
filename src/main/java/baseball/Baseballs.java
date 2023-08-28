@@ -36,4 +36,10 @@ public class Baseballs {
         }
     }
 
+    private boolean hasZero(String rawBallsInput) {
+        return Stream.of(rawBallsInput.split(""))
+                .map(Integer::parseInt)
+                .anyMatch(x->x==0);
+    }
+
 }
