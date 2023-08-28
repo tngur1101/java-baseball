@@ -30,6 +30,12 @@ public class Game {
         View.alertWin();
     }
 
+    private void proceedGame() {
+        generateGuessingBalls();
+        gameStatus.check(answerBalls, guessBalls);
+        View.printStatus(gameStatus.getBallCount(), gameStatus.getStrikeCount());
+    }
+
     private void initialize(){
         gameStatus = new MatchStatus();
         generateAnswerBalls();
