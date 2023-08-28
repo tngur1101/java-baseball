@@ -33,6 +33,12 @@ public class Baseballs {
         validateSize(rawBallsInput);
     }
 
+    private void validateSize(String rawBallsInput) {
+        if(hasWrongSize(rawBallsInput)){
+            throw new IllegalArgumentException(SIZE_ERROR_MESSAGE);
+        }
+    }
+
     private void validateNoDuplicate(String rawBallsInput) {
         if(hasDuplicate(rawBallsInput)){
             throw new IllegalArgumentException(DUPLICATE_NUMBER_ERROR_MESSAGE);
