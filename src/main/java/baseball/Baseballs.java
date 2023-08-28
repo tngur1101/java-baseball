@@ -39,6 +39,10 @@ public class Baseballs {
         }
     }
 
+    private boolean hasWrongSize(String rawBallsInput) {
+        return rawBallsInput.length() != BALLS_CONTAINER_SIZE;
+    }
+
     private void validateNoDuplicate(String rawBallsInput) {
         if(hasDuplicate(rawBallsInput)){
             throw new IllegalArgumentException(DUPLICATE_NUMBER_ERROR_MESSAGE);
