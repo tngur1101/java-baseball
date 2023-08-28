@@ -22,6 +22,14 @@ public class Game {
         this.userInput = userInput;
     }
 
+    public void play(){
+        initialize();
+        while(gameStatus.getStrikeCount() != STRIKE_CONDITION_TO_WIN){
+            proceedGame();
+        }
+        View.alertWin();
+    }
+
     private void initialize(){
         gameStatus = new MatchStatus();
         generateAnswerBalls();
