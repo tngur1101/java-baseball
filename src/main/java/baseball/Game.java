@@ -1,5 +1,7 @@
 package baseball;
 
+import view.View;
+
 import java.util.*;
 
 public class Game {
@@ -43,5 +45,14 @@ public class Game {
         return generatedNumbers;
     }
 
+    private void generateGuessingBalls(){
+        try{
+            View.askPlayerNumbers();
+            guessBalls = new Baseballs(userInput.nextLine());
+        }catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+            generateGuessingBalls();
+        }
+    }
 
 }
