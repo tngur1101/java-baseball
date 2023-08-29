@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import view.View;
 
 import java.util.Scanner;
@@ -16,12 +17,15 @@ public class Player {
     private int replayDecision;
 
     //Scanner로 받기
-    private final String playerInput;
+    private String playerInput;
 
     //생성자
-    public Player(String playerInput){
-        replayDecision = WANT_FINISH;
-        this.playerInput = playerInput;
+    public Player(){
+
+    }
+
+    public void setPlayer(){
+        this.playerInput = Console.readLine();
     }
 
     //GETTER
