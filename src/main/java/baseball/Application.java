@@ -7,14 +7,16 @@ import java.util.Scanner;
 public class Application {
     public static void main(String [] args) {
         // TODO: 프로그램 구현
-        final String scanner = Console.readLine();
-        Player player = new Player(scanner);
-        Game game = new Game(scanner);
+//        final String scanner = Console.readLine();
+//        Player player = new Player();
+        Game game = new Game();
 
-        do{
-            game.play();
-            checkReplayDecisionOfPlayer(player);
-        }while (player.getReplayDecision()==Player.WANT_REPLAY);
+//        do{
+//            game.play();
+//            checkReplayDecisionOfPlayer(player);
+//        }while (player.getReplayDecision()==Player.WANT_REPLAY);
+        game.play();
+
     }
 
     private static void checkReplayDecisionOfPlayer(Player player){
