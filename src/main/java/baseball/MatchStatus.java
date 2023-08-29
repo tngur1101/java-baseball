@@ -20,8 +20,9 @@ public class MatchStatus {
     }
 
     public void check(Baseballs answerBalls, Baseballs guessBalls){
-        ballCount = checkBalls(answerBalls, guessBalls);
         strikeCount = checkStrikes(answerBalls, guessBalls);
+
+        ballCount = checkBalls(answerBalls, guessBalls);
 
     }
 
