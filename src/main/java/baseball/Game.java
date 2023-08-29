@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import view.View;
 
@@ -14,13 +15,18 @@ public class Game {
     //공의 최소 번호
     private static final int MIN_BALL_VALUE = 1;
 
-    private final String userInput;
+    private String userInput;
     private Baseballs answerBalls;
     private Baseballs guessBalls;
     private MatchStatus gameStatus;
 
-    public Game(String userInput){
-        this.userInput = userInput;
+
+
+    public Game(){
+    }
+
+    public void setGame(){
+        this.userInput = Console.readLine();
     }
 
     public void play(){
@@ -30,10 +36,18 @@ public class Game {
             proceedGame();
         }
         View.alertWin();
+        String a = Console.readLine();
+        int num = Integer.parseInt(a);
+        if(num==1){
+            play();
+        }
     }
 
     private void proceedGame() {
+//        System.out.println(answerBalls);
+        setGame();
         generateGuessingBalls();
+//        System.out.println(guessBalls);
         gameStatus.check(answerBalls, guessBalls);
         View.printStatus(gameStatus.getBallCount(), gameStatus.getStrikeCount());
     }
@@ -48,23 +62,20 @@ public class Game {
     }
 
     private List<Integer> createNonDuplicateNumbers(int size) {
-        List<Integer> generatedNumbers = new ArrayList<>(createNumberSet(size));
-        Collections.shuffle(generatedNumbers);
-        return generatedNumbers;
-    }
-
-    private Set<Integer> createNumberSet(int ballContainerSize) {
-        Set<Integer> generatedNumbers = new HashSet<>();
-        while(generatedNumbers.size() != ballContainerSize){
+        List<Integer> generatedNumbers = new ArrayList<>();
+        while (generatedNumbers.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
-            generatedNumbers.add(randomNumber);
+            if (!generatedNumbers.contains(randomNumber)) {
+                generatedNumbers.add(randomNumber);
+            }
         }
         return generatedNumbers;
     }
 
     private void generateGuessingBalls(){
-        View.askPlayerNumbers();
+//        View.askPlayerNumbers();
         guessBalls = new Baseballs(userInput);
+
     }
 
 }
