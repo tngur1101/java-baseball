@@ -16,10 +16,10 @@ public class Player {
     private int replayDecision;
 
     //Scanner로 받기
-    private final Scanner playerInput;
+    private final String playerInput;
 
     //생성자
-    public Player(Scanner playerInput){
+    public Player(String playerInput){
         replayDecision = WANT_FINISH;
         this.playerInput = playerInput;
     }
@@ -32,7 +32,7 @@ public class Player {
     public void checkReplayDecision(){
         //View에 이제 어떤 함수가 있어야할듯
         View.askReplay();
-        String input = playerInput.nextLine();
+        String input = playerInput;
         replayDecision = checkDecision(input);
     }
 
