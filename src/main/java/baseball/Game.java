@@ -27,6 +27,7 @@ public class Game {
 
     public void setGame(){
         this.userInput = Console.readLine();
+
     }
 
     public void play(){
