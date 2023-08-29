@@ -14,7 +14,7 @@ public class Game {
     private static final int MAX_BALL_VALUE = 9;
     //공의 최소 번호
     private static final int MIN_BALL_VALUE = 1;
-
+    public static final String CHOICE_ERROR_MESSAGE = "올바른 선택지가 아닙니다.";
     private String userInput;
     private Baseballs answerBalls;
     private Baseballs guessBalls;
@@ -37,10 +37,20 @@ public class Game {
             proceedGame();
         }
         View.alertWin();
+        View.askReplay();
         String a = Console.readLine();
         int num = Integer.parseInt(a);
+        if(num!=1 && num != 2){
+
+        }
         if(num==1){
             play();
+        }
+    }
+
+    private void checknum(int num){
+        if(num != 1 && num != 2){
+            throw new IllegalArgumentException(CHOICE_ERROR_MESSAGE);
         }
     }
 
