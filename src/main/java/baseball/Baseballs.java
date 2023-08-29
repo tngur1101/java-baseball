@@ -19,6 +19,7 @@ public class Baseballs {
     }
 
     public Baseballs(String rawBallsInput){
+        validate(rawBallsInput);
         balls = Stream.of(rawBallsInput.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
@@ -28,7 +29,7 @@ public class Baseballs {
         return balls;
     }
 
-    private void validate(String rawBallsInput){
+    public void validate(String rawBallsInput){
         validateNoZero(rawBallsInput);
         validateNoDuplicate(rawBallsInput);
         validateSize(rawBallsInput);
