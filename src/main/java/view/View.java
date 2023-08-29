@@ -12,9 +12,7 @@ public class View {
 
     //플레이어에게 번호를 요구하는 함수
     public static void askPlayerNumbers(){
-
         System.out.print(ASK_PLAYER_NUMBERS);
-        System.out.println();
     }
 
     public static void startGame(){
