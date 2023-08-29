@@ -2,16 +2,23 @@ package view;
 
 public class View {
 
+    private static final String START_GAME = "숫자 야구 게임을 시작합니다.";
     private static final String ASK_PLAYER_NUMBERS = "숫자를 입력해주세요 : ";
     private static final String BALL_COUNT = "%d볼 ";
     private static final String STIKE_COUNT = "%d스트라이크 ";
     private static final String NOTHING = "낫싱";
     private static final String WIN = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private static final String ASK_REPLAY = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+    private static final String ASK_REPLAY = "게임을 다시 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     //플레이어에게 번호를 요구하는 함수
     public static void askPlayerNumbers(){
+
         System.out.print(ASK_PLAYER_NUMBERS);
+        System.out.println();
+    }
+
+    public static void startGame(){
+        System.out.println(START_GAME);
     }
 
     //Replay할건지 묻는 함수
