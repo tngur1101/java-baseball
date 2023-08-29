@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import view.View;
 
 import java.util.*;
@@ -13,16 +14,17 @@ public class Game {
     //공의 최소 번호
     private static final int MIN_BALL_VALUE = 1;
 
-    private final Scanner userInput;
+    private final String userInput;
     private Baseballs answerBalls;
     private Baseballs guessBalls;
     private MatchStatus gameStatus;
 
-    public Game(Scanner userInput){
+    public Game(String userInput){
         this.userInput = userInput;
     }
 
     public void play(){
+        View.startGame();
         initialize();
         while(gameStatus.getStrikeCount() != STRIKE_CONDITION_TO_WIN){
             proceedGame();
@@ -54,19 +56,15 @@ public class Game {
     private Set<Integer> createNumberSet(int ballContainerSize) {
         Set<Integer> generatedNumbers = new HashSet<>();
         while(generatedNumbers.size() != ballContainerSize){
-            generatedNumbers.add(new Random().nextInt(MAX_BALL_VALUE - MIN_BALL_VALUE +1));
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            generatedNumbers.add(randomNumber);
         }
         return generatedNumbers;
     }
 
     private void generateGuessingBalls(){
-        try{
-            View.askPlayerNumbers();
-            guessBalls = new Baseballs(userInput.nextLine());
-        }catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());
-            generateGuessingBalls();
-        }
+        View.askPlayerNumbers();
+        guessBalls = new Baseballs(userInput);
     }
 
 }
